@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Nuestra Tienda</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background: #f9f9f9;">
+
+  <div style="display: flex; overflow-x: auto; padding: 15px; gap: 10px;">
+    <ion-badge color="dark" style="padding: 8px 15px; border-radius: 20px;">Todo</ion-badge>
+    <ion-badge color="medium" style="padding: 8px 15px; border-radius: 20px; --background: #eee; color: #333;">Camisetas</ion-badge>
+    <ion-badge color="medium" style="padding: 8px 15px; border-radius: 20px; --background: #eee; color: #333;">Pantalones</ion-badge>
+    <ion-badge color="medium" style="padding: 8px 15px; border-radius: 20px; --background: #eee; color: #333;">Sneakers</ion-badge>
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let producto of productos">
+        <div class="product-card" style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); height: 100%; display: flex; flex-direction: column;">
+          
+          <div style="width: 100%; height: 260px; background: #fff; display: flex; align-items: center; justify-content: center; padding: 5px;">
+            <img [src]="producto.imagen" 
+                 style="width: 100%; height: 100%; object-fit: contain;"
+                 onerror="this.src='assets/icon/favicon.png'"> 
+          </div>
+
+          <div style="padding: 12px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <h3 style="margin: 0; font-size: 0.95rem; font-weight: 600; color: #333;">
+                {{ producto.nombre }}
+              </h3>
+              <p style="margin: 5px 0; font-size: 1.1rem; font-weight: bold; color: #000;">
+                ${{ producto.precio }}
+              </p>
+              
+              <p style="margin: 5px 0 0 0; font-size: 0.75rem; color: #666; line-height: 1.2;">
+                {{ producto.descripcion }}
+              </p>
+            </div>
+
+            <ion-button expand="block" color="dark" mode="ios" style="--border-radius: 10px; font-size: 0.8rem; margin-top: 15px;">
+              <ion-icon slot="start" name="cart-outline"></ion-icon>
+              Añadir
+            </ion-button>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

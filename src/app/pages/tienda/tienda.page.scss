@@ -1,0 +1,67 @@
+/* Animación de entrada para que los cuadros aparezcan suavemente al cargar */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+ion-card {
+  margin: 8px;
+  border-radius: 12px;
+  background: #ffffff;
+  /* Transición suave para que los cambios no sean bruscos */
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  animation: fadeInUp 0.5s ease-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  overflow: hidden; // Para que el zoom de la imagen no se salga del borde
+
+  /* EFECTO AL PASAR EL MOUSE O TOCAR */
+  &:hover {
+    transform: translateY(-5px); // Se eleva sutilmente
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); // La sombra se vuelve más profunda
+  }
+
+  img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+    transition: transform 0.5s ease; // Suaviza el zoom de la imagen
+  }
+
+  /* ZOOM SUTIL EN LA IMAGEN */
+  &:hover img {
+    transform: scale(1.08); 
+  }
+}
+
+ion-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  padding-top: 8px;
+  color: #222;
+}
+
+ion-card-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-top: 4px;
+  font-weight: 700; // Un poco más de peso al precio
+}
+
+/* Mejora opcional para el botón si lo tienes dentro del card */
+ion-button {
+  --border-radius: 8px;
+  margin: 12px;
+  font-weight: bold;
+  transition: filter 0.2s ease;
+
+  &:active {
+    transform: scale(0.95); // Efecto de pulsación al hacer click
+  }
+}
